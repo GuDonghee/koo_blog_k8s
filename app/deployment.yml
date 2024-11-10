@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: koo-blog-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: koo-blog-api
+  template:
+    metadata:
+      labels:
+        app: koo-blog-api
+    spec:
+      containers:
+        - name: koo-blog
+          image: gudonghee/koo-blog:latest
+          ports:
+          - containerPort: 8080
